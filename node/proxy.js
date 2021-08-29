@@ -1,6 +1,6 @@
-const punycode = require('punycode/');
-const Web3 = require('web3');
-const http = require('http');
+const punycode = require('./node_modules/punycode/');
+const Web3 = require('./node_modules/web3');
+const http = require('./node_modules/http');
 
 const web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/fdf2a581f7d945feaac1377227dd5c61"));
 
@@ -85,7 +85,7 @@ async function sendIt(hex) {
 http.createServer(async function (request, response) {
     let sub_puny = request.headers.host.split(".")[0];
     let sub_uni = punycode.toUnicode(sub_puny);
-    if (sub_uni == "www" || sub_uni.includes("localhost") || sub_uni.includes("netlify")) {
+    if (sub_uni == "www" || sub_uni.includes("localhost") || request.headers.host.includes("netlify")) {
         console.log(sub_uni);
         // response.writeHead(301, { "Location": "https://nftnft.lol" });
         response.writeHead(200, { "Content-Type": "text/plain" });
