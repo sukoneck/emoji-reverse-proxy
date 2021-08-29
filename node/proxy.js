@@ -1,6 +1,6 @@
-const punycode = require('./node_modules/punycode/');
-const Web3 = require('./node_modules/web3');
-const http = require('./node_modules/http');
+const punycode = require('punycode/');
+const Web3 = require('web3');
+const http = require('http');
 
 const web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/fdf2a581f7d945feaac1377227dd5c61"));
 
@@ -69,7 +69,6 @@ function failureCallback(error) {
     console.error("Error was: " + error);
 }
 
-
 async function sendIt(hex) {
     try {
         let redirects_data = await abiRedirects(hex);
@@ -102,5 +101,5 @@ http.createServer(async function (request, response) {
             console.log(error);
         }
     }
-}).listen(8888);
+}).listen(80);
 
