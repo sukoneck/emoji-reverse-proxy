@@ -85,7 +85,7 @@ async function sendIt(hex) {
 http.createServer(async function (request, response) {
     let sub_puny = request.headers.host.split(".")[0];
     let sub_uni = punycode.toUnicode(sub_puny);
-    if (sub_uni == "www" || sub_uni.includes("localhost")) {
+    if (sub_uni == "www" || sub_uni.includes("localhost") || sub_uni.includes("netlify")) {
         console.log(sub_uni);
         // response.writeHead(301, { "Location": "https://nftnft.lol" });
         response.writeHead(200, { "Content-Type": "text/plain" });
