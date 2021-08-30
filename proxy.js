@@ -57,7 +57,7 @@ async function sendIt(hex) {
 http.createServer(async function (request, response) {
     let sub_puny = request.headers.host.split(".")[0];
     let sub_uni = punycode.toUnicode(sub_puny);
-    if (sub_uni == "www" || sub_uni.includes("localhost") || request.headers.host.includes("netlify")) {
+    if (sub_uni == "www" || sub_uni.includes("localhost") || sub_uni.includes("nancy") || request.headers.host.includes("heroku")) {
         let content = "did you do a subdomain? it looks like: " + sub_puny
         console.log(content);
         response.writeHead(200, { "Content-Type": "text/plain" });
