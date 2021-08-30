@@ -58,7 +58,10 @@ http.createServer(async function (request, response) {
     let sub_puny = request.headers.host.split(".")[0];
     let sub_uni = punycode.toUnicode(sub_puny);
     if (sub_uni == "www" || sub_uni.includes("localhost") || sub_uni.includes("nancy") || request.headers.host.includes("heroku")) {
-        let content = "did you do a subdomain? it looks like: " + sub_puny
+        
+        // TODO create a second heroku app using the same name? Do CNAMEs work for this instead?
+
+        let content = "Welcome to the homepage! \n\nYou either used www or you didn't include a subdomain at all"
         console.log(content);
         response.writeHead(200, { "Content-Type": "text/plain" });
         response.write(content);
@@ -74,6 +77,9 @@ http.createServer(async function (request, response) {
                 response.write(content);
                 response.end();
             } else {
+
+                // TODO filter for "http" formatting e.g.  web3.utils.toHex("🍔") = '0xf09f8d94' comes back without a colon?!?!
+
                 let content = "let's go: " + w3_redirect;
                 console.log(content);
                 let dest = "http://" + w3_redirect;
@@ -86,37 +92,4 @@ http.createServer(async function (request, response) {
         }
     }
 }).listen(PORT);
-
-// async function handleRequest(request) {
-//     let statusCode = 301;
-//     let url = new URL(request.url);
-//     let sub = url.hostname.split(".")[0];
-//     let sub_uni = punycode.toUnicode(sub);
-//     if (sub_uni == "www" || sub_uni.includes("localhost") || url.hostname.includes("netlify")) {
-//         console.log("did you do a subdomain? it looks like: " + sub_uni);
-//         let destinationURL = "https://example.com/" + sub_uni;
-//         return Response.redirect(destinationURL, statusCode);
-//     } else {
-//         try {
-//             let sub_hex = web3.utils.utf8ToHex(sub_uni);
-//             let w3_redirect = await sendIt(sub_hex); 
-//             if (w3_redirect != null && !w3_redirect.trim().isEmpty) {
-//                 console.log("no redirect registered in web3 for: " + sub);
-//                 let destinationURL = "https://example.com/" + sub;
-//                 return Response.redirect(destinationURL, statusCode);
-//             } else {
-//                 console.log("let's go: " + sub);
-//                 return Response.redirect(w3_redirect, statusCode);
-//             }
-//         } catch (error) {
-//             console.log(error);
-//         }
-//     }
-// }
-
-// const target = new EventTarget();
-
-// target.addEventListener("fetch", async event => {
-//     event.respondWith(handleRequest(event.request))
-// })
 
