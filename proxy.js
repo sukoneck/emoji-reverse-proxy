@@ -63,7 +63,7 @@ http.createServer(async function (request, response) {
     // if they tryna go home then just let 'em go home 
     if (sub_uni == "www" || sub_uni.includes("localhost") || sub_uni.includes("nancy") || request.headers.host.includes("heroku")) {
         console.log("received subdomain: " + sub_puny + ", so forwarding to default: " + default_dest);
-        response.writeHead(301, { "Location": dest });
+        response.writeHead(301, { "Location": default_dest });
         response.end();
     } else {
         try {
@@ -73,7 +73,7 @@ http.createServer(async function (request, response) {
             // if there isn't a redirect registered, then send it to default
             if (w3_redirect == "") {
                 console.log("received subdomain: " + sub_puny + ", which doesn't have a redirect, so forwarding to default: " + default_dest);
-                response.writeHead(301, { "Location": dest });
+                response.writeHead(301, { "Location": default_dest });
                 response.end();
             } else {
 
