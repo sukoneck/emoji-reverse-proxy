@@ -83,9 +83,8 @@ http.createServer(async function (request, response) {
                 let content = "let's go: " + w3_redirect;
                 console.log(content);
                 if (w3_redirect.includes("http")) {
-                    let dest = toString(w3_redirect);
-                    console.log(dest);
-                    response.writeHead(301, { "Location": dest });
+                    console.log(w3_redirect);
+                    response.writeHead(301, { "Location": w3_redirect });
                     response.end();                    
                 }
                 let dest = "http://" + w3_redirect;
