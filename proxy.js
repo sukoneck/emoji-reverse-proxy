@@ -60,8 +60,8 @@ http.createServer(async function (request, response) {
     let sub_puny = request.headers.host.split(".")[0];
     let sub_uni = punycode.toUnicode(sub_puny);
 
-    // if they tryna go home then just let 'em go home 
-    if (sub_uni == "www" || sub_uni.includes("localhost") || sub_uni.includes("nancy") || request.headers.host.includes("heroku")) {
+    // if they tryna go home or to meta/test site then just let 'em go home 
+    if (sub_uni == "www" || sub_uni.includes("localhost") || sub_uni.includes("nancy") || sub_uni.includes("nftnft") || request.headers.host.includes("heroku")) {
         console.log("received subdomain: " + sub_puny + ", so forwarding to default: " + default_dest);
         response.writeHead(301, { "Location": default_dest });
         response.end();
