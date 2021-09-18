@@ -1,9 +1,9 @@
 # What is this?
 This is a reverse proxy specifically supporting emoji subdomains for [nftnft.lol](https://nftnft.lol) which is a Yat-esque service built on web3 by [Owen of 0xmons](https://twitter.com/0xmons). 
 
-Previously, nftnft.lol was using path-based routing for redirection: [nftnft.lol/#/a/🌈](http://nftnft.lol/#/a/🌈)
+Previously, nftnft.lol was using path-based routing for redirection and required the user to have a web3 connection: [nftnft.lol/#/a/🌈](http://nftnft.lol/#/a/🌈) 
 
-By including this proxy, nftnft.lol [now supports](https://twitter.com/nftnftlol/status/1432935366776950791?s=20) subdomain redirection: [🌈.nftnft.lol](http://🌈.nftnft.lol)
+By including this proxy, nftnft.lol [now supports](https://twitter.com/nftnftlol/status/1432935366776950791?s=20) subdomain redirection and the web3 is handled by the proxy: [🌈.nftnft.lol](http://🌈.nftnft.lol)
 
 # Why is this?
 
